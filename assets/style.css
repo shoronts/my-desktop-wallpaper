@@ -68,10 +68,8 @@ body {
 }
 
 /* World Animation */
-#stage {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+#stage1,
+#stage2 {
     z-index: 2;
     width: 300px;
     height: 300px;
@@ -87,6 +85,18 @@ body {
     -ms-perspective-origin: 50% 50%;
     -o-perspective-origin: 50% 50%;
     perspective-origin: 50% 50%;
+}
+
+#stage1 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+#stage2 {
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }
 
 .ball {
