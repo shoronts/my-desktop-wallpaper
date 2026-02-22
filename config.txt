@@ -1,0 +1,17 @@
+CONFIG = {
+    # "single" = same HTML on all screens
+    # "multi"  = different HTML per screen
+    "html_mode": "single",
+
+    # False = visual-only (click-through like wallpaper)
+    # True  = interactive
+    "interactive": False,
+
+    # FULL ABSOLUTE PATH (very important)
+    "single_html_path": "/Users/whiteking/Applications/my-desktop-wallpaper/index.html",
+
+    # Only used if html_mode == "multi"
+    "multi_html_paths": [
+        "/Users/whiteking/Applications/my-desktop-wallpaper/index.html",
+    ],
+}
