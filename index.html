@@ -6,220 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Think Different | Be Different</title>
-    <style>
-        html {
-            height: 100%;
-            overflow: hidden;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-
-        .custom-box {
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin-left: auto;
-            margin-right: auto;
-            color: #3AF201;
-        }
-
-        h1 {
-            text-align: center;
-            opacity: 0.5;
-            font-size: 22px;
-        }
-
-        #img {
-            height: 100vh;
-            width: 100vw;
-        }
-
-        #img img {
-            height: 100%;
-            width: 100%;
-            opacity: 0.05;
-            filter: saturate(3);
-        }
-
-        /* Animation */
-        .stage {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-        }
-        .ball {
-            display: inline-block;
-            position: relative;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            border-radius: 50%;
-            -webkit-transform-style: preserve-3d;
-            background: url('http://hop.ie/balls/images/world-map-one-color.png') repeat-x;
-            background-size: auto 100%;
-            -webkit-animation: move-map 30s infinite linear;
-            -moz-animation: move-map 30s infinite linear;
-            -o-animation: move-map 30s infinite linear;
-            -ms-animation: move-map 30s infinite linear;
-            animation: move-map 30s infinite linear;
-        }
-
-        .ball:before {
-            content: "";
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            box-shadow: -40px 10px 70px 10px rgba(0, 0, 0, 0.5) inset;
-            z-index: 2;
-        }
-
-        .ball:after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            -webkit-filter: blur(0);
-            opacity: 0.3;
-            background: radial-gradient(circle at 50% 80%, #81e8f6, #76deef 10%, #055194 66%, #062745 100%);
-        }
-
-        .ball .shadow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
-            -webkit-transform: rotateX(90deg) translateZ(-150px);
-            -moz-transform: rotateX(90deg) translateZ(-150px);
-            -ms-transform: rotateX(90deg) translateZ(-150px);
-            -o-transform: rotateX(90deg) translateZ(-150px);
-            transform: rotateX(90deg) translateZ(-150px);
-            z-index: -1;
-        }
-
-        .stage {
-            width: 300px;
-            height: 300px;
-            display: inline-block;
-            margin: 20px;
-            -webkit-perspective: 1200px;
-            -moz-perspective: 1200px;
-            -ms-perspective: 1200px;
-            -o-perspective: 1200px;
-            perspective: 1200px;
-            -webkit-perspective-origin: 50% 50%;
-            -moz-perspective-origin: 50% 50%;
-            -ms-perspective-origin: 50% 50%;
-            -o-perspective-origin: 50% 50%;
-            perspective-origin: 50% 50%;
-        }
-
-        @-moz-keyframes move-map {
-            0% {
-                background-position: -849px 0;
-            }
-
-            100% {
-                background-position: 0 0;
-            }
-        }
-
-        @-webkit-keyframes move-map {
-            0% {
-                background-position: 0 0;
-            }
-
-            100% {
-                background-position: -849px 0;
-            }
-        }
-
-
-        @-o-keyframes move-map {
-            0% {
-                background-position: -849px 0;
-            }
-
-            100% {
-                background-position: 0 0;
-            }
-        }
-
-        @-ms-keyframes move-map {
-            0% {
-                background-position: -849px 0;
-            }
-
-            100% {
-                background-position: 0 0;
-            }
-        }
-
-        @keyframes move-map {
-            0% {
-                background-position: -849px 0;
-            }
-
-            100% {
-                background-position: 0 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
-    <div class="custom-box">
+    <div id="custom-box">
         <h1>بسم الله الرحمن الرحيم<br>আল্লাহ সর্ব শক্তিমান<br>GOD is Almighty</h1>
         <div id="img">
-            <img src="shoron.png" alt="Md Sharif Foysal Shoron">
+            <img src="assets/shoron.png" alt="Md Sharif Foysal Shoron">
+        </div>
+        <div id="video">
+            <video autoplay muted loop playsinline>
+                <source src="assets/output.mp4" type="video/mp4">
+            </video>
         </div>
     </div>
-    <section class="stage">
+    <section id="stage">
         <figure class="ball"><span class="shadow"></span></figure>
     </section>
     <canvas id="Matrix"></canvas>
-    <script>
-        const canvas = document.getElementById('Matrix');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const context = canvas.getContext('2d');
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        const nums = '0123456789০১২৩৪৫৬৭৮৯';
-        const bangla = 'অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎ ং ঃ ঁ';
-        const arabic = 'ابتثجحخدذرزسشصضطظعغفقكلمنهـوي';
-        const alphabet = arabic + katakana + bangla + latin + nums;
-        const fontSize = 22;
-        const columns = canvas.width / fontSize;
-        const rainDrops = [];
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
-        const draw = () => {
-            context.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            context.fillRect(0, 0, canvas.width, canvas.height);
-            context.fillStyle = '#0F0';
-            context.font = fontSize + 'px monospace';
-            for (let i = 0; i < rainDrops.length; i++) {
-                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                context.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
-                }
-                rainDrops[i]++;
-            }
-        };
-        setInterval(draw, 30);
-    </script>
+    <script src="assets/script.js"></script>
 </body>
 
 </html>
