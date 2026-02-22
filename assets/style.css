@@ -42,6 +42,32 @@ body {
     filter: saturate(3);
 }
 
+#time-display {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    color: #0F0;
+    text-align: right;
+    box-shadow: 0 0 20px rgba(15, 240, 0, 0.3);
+}
+
+#current-time {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#current-date {
+    font-size: 14px;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
 #custom-box #video {
     width: 100%;
     height: 100%;

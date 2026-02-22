@@ -1,3 +1,56 @@
+// Update time and date in top right
+function updateTimeDisplay() {
+    const now = new Date();
+
+    // Format time with AM/PM
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 12-hour format
+    const timeString = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+
+    // Format date as "Sun Feb 22 2026"
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const dayOfWeek = daysOfWeek[now.getDay()];
+    const month = months[now.getMonth()];
+    const date = now.getDate();
+    const year = now.getFullYear();
+    const dateString = `${dayOfWeek} ${month} ${date} ${year}`;
+
+    document.getElementById('current-time').textContent = timeString;
+    document.getElementById('current-date').textContent = dateString;
+}
+
+// Update time immediately and then every second
+updateTimeDisplay();
+setInterval(updateTimeDisplay, 1000);
+
+// Infinite video looping - real-time seamless loop
+const bgVideo = document.getElementById('bg-video');
+if (bgVideo) {
+    bgVideo.addEventListener('ended', function () {
+        this.currentTime = 0;
+        this.play();
+    }, false);
+
+    // Real-time loop check using requestAnimationFrame for zero lag
+    const loopCheckStart = 5; // Start looping from 5 seconds
+    const loopThreshold = 0.1; // Check within 0.1 seconds of the end
+
+    function checkVideoLoop() {
+        if (bgVideo && !bgVideo.paused && bgVideo.currentTime >= bgVideo.duration - loopThreshold) {
+            bgVideo.currentTime = loopCheckStart;
+        }
+        requestAnimationFrame(checkVideoLoop);
+    }
+
+    // Start the real-time loop checker
+    requestAnimationFrame(checkVideoLoop);
+}
+
 const canvas = document.getElementById('Matrix');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
