@@ -1,1 +1,1 @@
-python3 main.py >/tmp/htmlwallpaper.log 2>&1 & disown
+python main.py >/tmp/htmlwallpaper.log 2>&1 & disown
